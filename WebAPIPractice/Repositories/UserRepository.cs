@@ -16,7 +16,8 @@ namespace WebAPIPractice.Repositories
                 City = "Nashville",
                 State = "TN",
                 ZipCode = "37208",
-                ProfilePicURL = "dummyProfilePicURL"
+                ProfilePicURL = "dummyProfilePicURL",
+                BioInfo = "",
             },
             new User()
             {
@@ -27,13 +28,30 @@ namespace WebAPIPractice.Repositories
                 City = "Nashville",
                 State = "TN",
                 ZipCode = "37208",
-                ProfilePicURL = "dummyProfilePicURL2"
-
+                ProfilePicURL = "dummyProfilePicURL2",
+                BioInfo = "",
             }
         };
         public User? GetById(int id)
         {
             return _userData.FirstOrDefault(u => u.Id == id);
+        }
+
+        public void Create(User newUser)
+        {
+            _userData.Add(newUser);
+        }
+
+        public void Update(User updatedUser)
+        {
+            var index = _userData.IndexOf(_userData.FirstOrDefault(u => u.Id == updatedUser.Id));
+            _userData[index] = updatedUser;
+        }
+
+        public void Delete(int id)
+        {
+            var userToDelete = _userData.FirstOrDefault(u => u.Id == id);
+            _userData.Remove(userToDelete);
         }
 
     }
