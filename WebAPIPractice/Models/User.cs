@@ -10,5 +10,6 @@
         public string State { get; set; }  
         public string ZipCode { get; set; }
         public string ProfilePicURL { get; set; }
+        public string BioInfo { get; set; }
     }
 }

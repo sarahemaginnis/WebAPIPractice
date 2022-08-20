@@ -25,5 +25,23 @@ namespace WebAPIPractice.Controllers
         {
             return _userRepo.GetById(id);
         }
+
+        [HttpPost]
+        public void Create([FromBody] User newUser)
+        {
+            _userRepo.Create(newUser);
+        }
+
+        [HttpPut("{id}")]
+        public void Update([FromBody] User updatedUser)
+        {
+            _userRepo.Update(updatedUser);
+        }
+
+        [HttpDelete("{id}")]
+        public void Delete([FromRoute] int id)
+        {
+            _userRepo.Delete(id);
+        }
     }
 }
